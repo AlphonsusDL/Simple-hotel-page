@@ -1,0 +1,87 @@
+//COLORS
+$color-primary: #74a655;
+$color-secondary: #55a65f;
+$color-light: #f7f7f7;
+$color-dark: #333;
+
+// HELPER CLASSES
+.text-primary {
+  color: $color-primary;
+}
+
+.heading-1 {
+  font-size: 6.5rem;
+}
+
+.heading-2 {
+  text-transform: uppercase;
+  font-size: 3rem;
+  letter-spacing: 2px;
+}
+
+.heading-secondary {
+  background-image: linear-gradient(to right, $color-primary, $color-secondary);
+  display: inline-block;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  background-color: $color-primary;
+  color: $color-light;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 20rem;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s;
+
+  &:hover {
+    background: darken($color-primary, 10%);
+    color: darken($color-light, $amount: 10%);
+  }
+
+  &:active {
+    outline: none;
+    background-color: $color-primary;
+  }
+}
+
+.container {
+  max-width: 114rem;
+  margin: 0 auto;
+}
+
+// Margin-top
+.mt-sm {
+  margin-top: 2rem;
+}
+
+.mt-md {
+  margin-top: 4rem;
+}
+
+.mt-lg {
+  margin-top: 6rem;
+}
+
+// margin-bottom
+.mb-sm {
+  margin-bottom: 2rem;
+}
+
+.mb-md {
+  margin-bottom: 4rem;
+}
+
+.mb-lg {
+  margin-bottom: 6rem;
+}

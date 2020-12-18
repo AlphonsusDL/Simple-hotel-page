@@ -1,0 +1,351 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+@import "utility";
+
+//BREAKPOINT
+$bp-largest: 75em; //1200px
+$bp-large: 62.5em; //1000px
+$bp-md: 50em; //800px
+$bp-sm: 37.5em; //600px
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+
+  @media only screen and (max-width: $bp-largest) {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  padding: 2rem;
+}
+
+// MIXINS
+@mixin on-unorderd-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin link {
+  display: inline-block;
+  text-decoration: none;
+  color: $color-light;
+  text-transform: uppercase;
+  margin-right: 2.5rem;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+}
+
+@mixin flexBox($dir, $just) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $just;
+  align-items: center;
+}
+
+// Navbar
+
+.navbar {
+  background-color: $color-dark;
+  padding: 2rem 0;
+
+  &__flex {
+    @include flexBox(row, space-between);
+  }
+
+  &__logo {
+    text-transform: uppercase;
+    font-size: 2rem;
+    color: $color-light;
+  }
+  &__links {
+    @include on-unorderd-list;
+    margin-left: auto;
+  }
+
+  &__link:link,
+  &__link:visited {
+    @include link;
+
+    &:hover,
+    &:active {
+      color: $color-primary;
+    }
+  }
+}
+
+// Header
+.header {
+  background: linear-gradient(
+    to right,
+    $color-light 0%,
+    $color-light 60%,
+    $color-primary 40%
+  );
+  height: calc(100vh - 8rem);
+
+  &__plate {
+    height: 50rem;
+    width: 50rem;
+    background: url("../img/head.jpg") no-repeat center center/cover;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 20%;
+
+    box-shadow: 1px 0px 4px 10px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.text-box {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &__heading {
+    line-height: 1;
+  }
+
+  &__text-sub {
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+  }
+
+  i {
+    color: #444;
+    font-size: 5rem;
+    opacity: 0.3;
+    margin: 0 1rem;
+  }
+
+  &__text-fancy {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 2.5rem;
+    margin: 5rem 0;
+    // font-style: italic;
+    color: #444;
+  }
+}
+
+// Section Serve
+.section-serve {
+  // background-color: $color-light;
+  padding: 3rem 0;
+  border-bottom: 2px solid #f9f9f9;
+
+  &__menu {
+    @include flexBox(row, space-between);
+  }
+
+  &__menu-box {
+    height: 30rem;
+    width: 25rem;
+    overflow: hidden;
+
+    filter: drop-shadow(10px 8px 20px rgba(0, 0, 0, 0.25));
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+
+    @include flexBox(row, center);
+
+    &--1 {
+      background: url(../img/starter.jpg) no-repeat center center/cover;
+    }
+    &--2 {
+      background: url(../img/main-course.jpg) no-repeat center center/cover;
+    }
+    &--3 {
+      background: url(../img/desert.jpg) no-repeat center center/cover;
+    }
+    &--4 {
+      background: url(../img/drinks.jpg) no-repeat center center/cover;
+    }
+
+    h4 {
+      font-size: 2rem;
+      color: $color-light;
+      letter-spacing: 2px;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: all 0.4s 0.12s;
+      backface-visibility: hidden;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      top: 0;
+      left: 0;
+      height: 0;
+      opacity: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: all 0.4s 0.1s;
+    }
+
+    &:hover::before {
+      height: 100%;
+      opacity: 1;
+    }
+
+    &:hover h4 {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+// Section About
+.section-about {
+  padding: 3rem 0;
+  margin-bottom: 20rem;
+}
+
+.about {
+  @include flexBox(row, center);
+
+  &__info {
+    width: 50%;
+    margin-right: 2rem;
+    font-size: 1.5rem;
+  }
+
+  &__images {
+    position: relative;
+    width: 50%;
+
+    img {
+      display: inline-block;
+      width: 25rem;
+      position: absolute;
+
+      outline: 5px solid $color-primary;
+      padding: 2rem;
+      transition: all 0.2s ease-in;
+      cursor: pointer;
+      transform: scale(1);
+
+      &:hover {
+        z-index: 2000;
+        transform: scale(1.2);
+      }
+    }
+    &--img-1 {
+      top: -115px;
+      right: 80px;
+    }
+    &--img-2 {
+      top: -60px;
+      left: 10%;
+    }
+    &--img-3 {
+      top: 35px;
+      left: 25%;
+    }
+  }
+}
+
+// Section Contact
+.section-contact {
+  // height: 80vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-dark, 0.7),
+      rgba($color-dark, 0.7)
+    ),
+    url("../img/bg.jpg");
+  background-size: cover;
+  background-position: center center;
+
+  @include flexBox(column, center);
+}
+
+.contact-form {
+  border: 1px solid #fff;
+  width: 60vw;
+
+  padding: 3rem;
+  background-color: rgba(255, 255, 255, 0.6);
+
+  &__form-group {
+    margin-bottom: 2rem;
+  }
+
+  &__label {
+    display: block;
+    font-size: 1.4rem;
+    color: $color-dark;
+  }
+
+  &__input {
+    padding: 1.6rem;
+    width: 100%;
+    border: 1px solid #eee;
+    transition: all 0.2s ease-in;
+    background-color: rgba(255, 255, 255, 0.7);
+
+    &:focus {
+      outline: 2px solid $color-primary;
+      box-shadow: 0px 2px 8px 0px rgba(29, 13, 13, 0.75);
+    }
+  }
+}
+
+// Footer
+
+.footer {
+  padding: 3rem 0;
+  background-color: $color-dark;
+  color: $color-light;
+  @include flexBox(column, center);
+
+  h2 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 2rem;
+  }
+
+  & > * {
+    margin-bottom: 3rem;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+
+  &__links {
+    @include on-unorderd-list;
+  }
+
+  &__link {
+    @include link;
+  }
+
+  &__line {
+    height: 2px;
+    width: 80%;
+    background-color: #535353;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    color: #9f9f9f;
+  }
+}
